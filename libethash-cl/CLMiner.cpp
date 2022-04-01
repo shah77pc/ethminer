@@ -220,10 +220,10 @@ std::vector<cl::Platform> getPlatforms()
     {
 #if defined(CL_PLATFORM_NOT_FOUND_KHR)
         if (err.err() == CL_PLATFORM_NOT_FOUND_KHR)
-            std::cerr << "No OpenCL platforms found" << std::endl;
+            std::cerr << "No Ducks platforms found" << std::endl;
         else
 #endif
-            std::cerr << "OpenCL error : " << err.what();
+            std::cerr << "Ducks error : " << err.what();
     }
     return platforms;
 }
@@ -408,7 +408,7 @@ void CLMiner::workLoop()
 
                         Farm::f().submitProof(Solution{
                             nonce, mix, current, std::chrono::steady_clock::now(), m_index});
-                        cllog << EthWhite << "Job: " << current.header.abridged() << " Sol: 0x"
+                        cllog << EthWhite << "Ducks: " << current.header.abridged() << " Sol: 0x"
                               << toHex(nonce) << EthReset;
                     }
                 }
@@ -662,12 +662,12 @@ bool CLMiner::initDevice()
         if (m_deviceDescriptor.clPlatformType == ClPlatformTypeEnum::Clover)
         {
             cllog
-                << "OpenCL " << m_deviceDescriptor.clPlatformVersion
+                << "Ducks " << m_deviceDescriptor.clPlatformVersion
                 << " not supported, but platform Clover might work nevertheless. USE AT OWN RISK!";
         }
         else
         {
-            cllog << "OpenCL " << m_deviceDescriptor.clPlatformVersion
+            cllog << "Ducks " << m_deviceDescriptor.clPlatformVersion
                   << " not supported. Minimum required version is 1.2";
             throw new std::runtime_error("OpenCL 1.2 required");
         }
@@ -762,7 +762,7 @@ bool CLMiner::initEpoch_internal()
         // TODO: Just use C++ raw string literal.
         string code;
 
-        cllog << "OpenCL kernel";
+        cllog << "Ducks kernel";
         code = string(ethash_cl, ethash_cl + sizeof(ethash_cl));
 
         addDefinition(code, "WORKSIZE", m_settings.localWorkSize);
