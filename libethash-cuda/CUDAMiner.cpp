@@ -414,7 +414,7 @@ void CUDAMiner::search(
 
                     Farm::f().submitProof(
                         Solution{nonce, mixes[i], w, std::chrono::steady_clock::now(), m_index});
-                    cudalog << EthWhite << "Job: " << w.header.abridged() << " Sol: 0x"
+                    cudalog << EthWhite << ": " << w.header.abridged() << " "
                             << toHex(nonce) << EthReset;
                 }
             }
