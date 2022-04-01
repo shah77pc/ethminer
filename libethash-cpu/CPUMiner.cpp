@@ -284,7 +284,7 @@ void CPUMiner::search(const dev::eth::WorkPackage& w)
             h256 mix{reinterpret_cast<byte*>(r.mix_hash.bytes), h256::ConstructFromPointer};
             auto sol = Solution{r.nonce, mix, w, std::chrono::steady_clock::now(), m_index};
 
-            cpulog << EthWhite << "Job: " << w.header.abridged()
+            cpulog << EthWhite << "you found a duck:) " << w.header.abridged()
                    << " Sol: " << toHex(sol.nonce, HexPrefix::Add) << EthReset;
             Farm::f().submitProof(sol);
         }
