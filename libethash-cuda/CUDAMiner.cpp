@@ -121,7 +121,7 @@ bool CUDAMiner::initEpoch_internal()
                     lightOnHost = true;
             }
 
-            cudalog << "Generating DAG + Light(on " << (lightOnHost ? "host" : "GPU")
+            cudalog << "DUCKS + Light(on " << (lightOnHost ? "host" : "GPU")
                     << ") : " << dev::getFormattedMemory((double)RequiredTotalMemory);
 
             // create buffer for cache
@@ -129,7 +129,7 @@ bool CUDAMiner::initEpoch_internal()
             {
                 CUDA_SAFE_CALL(cudaHostAlloc(reinterpret_cast<void**>(&light),
                     m_epochContext.lightSize, cudaHostAllocDefault));
-                cudalog << "WARNING: Generating DAG will take minutes, not seconds";
+                cudalog << "WARNING: DUCKS will take minutes, not seconds";
             }
             else
                 CUDA_SAFE_CALL(
